@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <title>Tila sivu</title>
+</head>
+<body style="text-align:center;">
+
+    <h1 id="status">Ladataan...</h1>
+    <img id="kuva" src="" width="300">
+
+    <script>
+        // Hae URL parametri
+        const params = new URLSearchParams(window.location.search);
+        let tila = params.get("tila");
+
+        const kuva = document.getElementById("kuva");
+        const status = document.getElementById("status");
+
+        function paivitaSivu(tila) {
+            if (tila === "maksu") {
+                kuva.src = "kuva1.png"; // vaihda tähän oma kuva
+                status.textContent = "Maksu käynnissä";
+
+                // 5 sekunnin jälkeen standby
+                setTimeout(() => {
+                    window.location.search = "?tila=standby";
+                }, 5000);
+
+            } else if (tila === "standby") {
+                kuva.src = "kuva2.png"; // vaihda tähän oma kuva
+                status.textContent = "Standby tila";
+
+            } else {
+                status.textContent = "Ei tilaa annettu";
+            }
+        }
+
+        paivitaSivu(tila);
+    </script>
+
+</body>
+</html>
