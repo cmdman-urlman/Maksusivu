@@ -15,12 +15,11 @@
         let tila = params.get("tila");
 
         const kuva = document.getElementById("kuva");
-        const status = document.getElementById("status");
+      
 
         function paivitaSivu(tila) {
             if (tila === "maksu") {
-                kuva.src = "kuva1.png"; // vaihda tähän oma kuva
-                status.textContent = "Maksu käynnissä";
+                kuva.src = "kuva1.png"
 
                 // 5 sekunnin jälkeen standby
                 setTimeout(() => {
@@ -28,12 +27,8 @@
                 }, 5000);
 
             } else if (tila === "standby") {
-                kuva.src = "kuva2.png"; // vaihda tähän oma kuva
-                status.textContent = "Standby tila";
-
-            } else {
-                status.textContent = "Ei tilaa annettu";
-            }
+                kuva.src = "kuva2.png";
+            
         }
 
         paivitaSivu(tila);
